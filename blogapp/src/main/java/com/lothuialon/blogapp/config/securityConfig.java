@@ -76,14 +76,14 @@ public class securityConfig {
 
     }
 
-    /* 
+    /*  in memory authentication is not used
     @Bean
     public UserDetailsManager userDetailsManager(){
 
-        UserDetails cannosa = User.builder()
-        .username("cannosa")
+        UserDetails x = User.builder()
+        .username("")
         .password(passwordEncoder()
-        .encode("cannosa"))
+        .encode(""))
         .roles("ADMIN").build();
 
         return new InMemoryUserDetailsManager(cannosa); 
