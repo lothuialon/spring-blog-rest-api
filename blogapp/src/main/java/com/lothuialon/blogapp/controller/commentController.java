@@ -33,8 +33,7 @@ public class commentController {
     }
 
 
-
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value="/posts/{postId}/comments")
     public ResponseEntity<commentDTO> createComment(
         @PathVariable(required = true, value = "postId") int postId,
@@ -43,7 +42,8 @@ public class commentController {
 
         return new ResponseEntity<>(CommentService.createComment(theCommentDTO, postId), HttpStatus.CREATED);
     }
-
+    
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(value="/posts/{postId}/comments")
     public ResponseEntity<List<commentDTO>> getCommentsById(@PathVariable(name = "postId") int postId) {
 
@@ -51,6 +51,7 @@ public class commentController {
 
     }
     
+    @PreAuthorize("hasRole('USER')")
     @GetMapping(value="/posts/{postId}/comments/{commentId}")
     public ResponseEntity<commentDTO> getCommentById(@PathVariable(value = "postId") int postId,
      @PathVariable(value = "commentId") int commentId) {
@@ -58,6 +59,7 @@ public class commentController {
         return new ResponseEntity<>(theCommentDTO, HttpStatus.OK);
     }
     
+    @PreAuthorize("hasRole('ADMIN')") 
     @PutMapping(value="/posts/{postId}/comments/{commentId}")
     public ResponseEntity<commentDTO> updateComment(@PathVariable(value = "postId") int postId,
      @PathVariable(value = "commentId") int commentId, @RequestBody commentDTO theCommentDTO) {
@@ -65,7 +67,7 @@ public class commentController {
         return new ResponseEntity<>(updatedCommentDTO, HttpStatus.OK);
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(value="/posts/{postId}/comments/{commentId}")
     public ResponseEntity<String> deleteById(@PathVariable(value = "postId") int postId,
      @PathVariable(value = "commentId") int commentId) {
