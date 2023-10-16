@@ -8,8 +8,8 @@ public class PasswordGeneratorEncoder {
 /* 
 public static void main(String[] args) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        System.out.println(passwordEncoder.encode("20012001a"));
-        System.out.println(passwordEncoder.encode("admin"));
+        System.out.println(passwordEncoder.encode(""));
+        System.out.println(passwordEncoder.encode(""));
 }
 */
 }
