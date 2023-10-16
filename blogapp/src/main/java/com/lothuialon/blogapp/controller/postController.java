@@ -43,6 +43,7 @@ public class postController{
     }
 
     //pagesort
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("/posts")
     public postResponse getAllPosts(@RequestParam(required = false, defaultValue = "0", value = "pageNo") int pageNo, 
     @RequestParam(required = false, value = "pageSize", defaultValue = "10") int pageSize,
@@ -50,7 +51,7 @@ public class postController{
 
         return thePostService.getAllPosts(pageNo, pageSize, sortBy);
     }
-
+    @PreAuthorize("hasRole('USER')")
     @GetMapping("posts/{id}")
     public ResponseEntity<postDTO> getPostById(@PathVariable int id){
         
