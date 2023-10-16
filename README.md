@@ -1,3 +1,3 @@
 # springBlogApplication
 
-A project created while learning the spring framework.
+A Spring REST API application
